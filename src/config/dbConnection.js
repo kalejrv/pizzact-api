@@ -30,6 +30,7 @@ const dbConnection = async () => {
     await db.sync();
 
     console.log(`DB connection successfully.`);
+    return db;
   } catch (error) {
     console.log(error);
   };
