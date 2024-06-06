@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API de app pizzact.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "server": "nodemon ./src/app.js"
   },
