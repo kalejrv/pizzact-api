@@ -1,9 +1,13 @@
 import { DataTypes } from "sequelize";
-import dbConnection from "../../config/dbConnection.js";
+import db from "../../config/dbConnection.js";
 
-const db = await dbConnection();
-
-export const Pizza = db.define("pizza", {
+export const Pizza = db.define("tb_pizza", {
+  id_pizza: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
   quantity: {
     type: DataTypes.INTEGER(2),
     allowNull: false,

@@ -5,7 +5,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon ./src/app.js"
+    "server": "nodemon ./src/app.js",
+    "db:dt": "node ./src/seeders/dropTables.js -dt",
+    "db:ct": "node ./src/seeders/cleanTables.js -ct",
+    "db:gt": "node ./src/seeders/generateTables.js -gt"
   },
   "author": "Kevin Reyes",
   "license": "ISC",
