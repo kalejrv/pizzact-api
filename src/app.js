@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import db from "./config/dbConnection.js";
+import { authRouter } from "./routes/index.js";
 
 /* Allow environment variables and create a express application. */
 dotenv.config();
@@ -27,3 +28,7 @@ try {
 } catch (error) {
   console.log(error);
 };
+
+/* Routing. */
+const apiVersion = "/api/v1";
+app.use(`${apiVersion}/auth`, authRouter);

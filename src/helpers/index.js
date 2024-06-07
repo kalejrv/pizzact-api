@@ -1,1 +1,2 @@
-export * from "./userPassword.js";
+export * from "./passwordHandler.js";
+export * from "./jwtHandler.js";
