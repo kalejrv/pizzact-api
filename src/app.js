@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import dbConnection from "./config/dbConnection.js";
+import db from "./config/dbConnection.js";
 
 /* Allow environment variables and create a express application. */
 dotenv.config();
@@ -18,5 +18,12 @@ app.listen(PORT, () => {
   console.log(`API running on port: ${PORT}`);
 });
 
-/* Make databse connection. */
-dbConnection();
+/* Make database connection. */
+try {
+  await db.authenticate();
+  await db.sync();
+
+  console.log(`DB connection successfully.`);
+} catch (error) {
+  console.log(error);
+};

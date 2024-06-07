@@ -1,9 +1,13 @@
 import { DataTypes } from "sequelize";
-import dbConnection from "../../config/dbConnection.js";
+import db from "../../config/dbConnection.js";
 
-const db = await dbConnection();
-
-export const Flavor = db.define("flavor", {
+export const Flavor = db.define("tb_flavor", {
+  id_flavor: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
   flavor: {
     type: DataTypes.STRING(30),
     allowNull: false,

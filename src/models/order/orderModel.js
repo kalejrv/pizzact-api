@@ -1,5 +1,11 @@
-import dbConnection from "../../config/dbConnection.js";
+import { DataTypes } from "sequelize";
+import db from "../../config/dbConnection.js";
 
-const db = await dbConnection();
-
-export const Order = db.define("order", {});
+export const Order = db.define("tb_order", {
+  id_order: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+});

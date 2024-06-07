@@ -1,9 +1,13 @@
 import { DataTypes } from "sequelize";
-import dbConnection from "../../config/dbConnection.js";
+import db from "../../config/dbConnection.js";
 
-const db = await dbConnection();
-
-export const Detail = db.define("detail", {
+export const Detail = db.define("tb_detail", {
+  id_detail: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
   size: {
     type: DataTypes.STRING(30),
     allowNull: false,

@@ -1,10 +1,14 @@
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
-import dbConnection from "../../config/dbConnection.js";
+import db from "../../config/dbConnection.js";
 
-const db = await dbConnection();
-
-const Admin = db.define("admin", {
+const Admin = db.define("tb_admin", {
+  id_admin: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
   name: {
     type: DataTypes.STRING(50),
     allowNull: false,

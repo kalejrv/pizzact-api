@@ -1,16 +1,20 @@
 import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
-import dbConnection from "../../config/dbConnection.js";
+import db from "../../config/dbConnection.js";
 
-const db = await dbConnection();
-
-const Client = db.define("client", {
+const Client = db.define("tb_client", {
+  id_client: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
   name: {
     type: DataTypes.STRING(50),
     allowNull: false,
   },
   address: {
-    type: DataTypes.STRING(100),
+    type: DataTypes.STRING(200),
     allowNull: false,
   },
   phone: {
@@ -39,4 +43,4 @@ Client.prototype.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-export { Client };
+export default Client;
