@@ -1,14 +1,16 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import db from "./config/dbConnection.js";
-import { authRouter } from "./routes/index.js";
+import { authRouter, homeRouter, orderRouter } from "./routes/index.js";
 
 /* Allow environment variables and create a express application. */
 dotenv.config();
 const app = express();
 
-/* Configure express to use cors, response json data and allow data from html forms. */
+/* Configure express to parse cookies, cors, response json data and allow data from html forms. */
+app.use(cookieParser())
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,3 +34,5 @@ try {
 /* Routing. */
 const apiVersion = "/api/v1";
 app.use(`${apiVersion}/auth`, authRouter);
+app.use(`${apiVersion}/`, homeRouter);
+app.use(`${apiVersion}/order`, orderRouter);

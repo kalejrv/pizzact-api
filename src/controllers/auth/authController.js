@@ -1,6 +1,6 @@
 import { validationResult } from "express-validator";
 import { checkIfClientAccountExist, createClientAccount } from "../../services/auth/authService.js";
-import { generateJWT } from "../../helpers/jwtHandler.js";
+import { generateJWT } from "../../helpers/index.js";
 
 export const login = async (req, res) => {
   const formValidation = validationResult(req);
@@ -29,7 +29,7 @@ export const login = async (req, res) => {
   const { id_client, name } = client;
   const authToken = generateJWT({ id_client, name });
 
-  res.cookie("_authToken", authToken, { httpOnly: true }).redirect("/pizzas");
+  res.cookie("_authToken", authToken, { httpOnly: true }).redirect("/api/v1/");
 };
 
 export const register = async (req, res) => {
