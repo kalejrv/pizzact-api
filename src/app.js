@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import db from "./config/dbConnection.js";
-import { authRouter, homeRouter, orderRouter } from "./routes/index.js";
+import { loginRouter, registerRouter } from "./routes/auth/index.js";
 
 /* Allow environment variables and create a express application. */
 dotenv.config();
@@ -33,6 +33,4 @@ try {
 
 /* Routing. */
 const apiVersion = "/api/v1";
-app.use(`${apiVersion}/auth`, authRouter);
-app.use(`${apiVersion}/`, homeRouter);
-app.use(`${apiVersion}/order`, orderRouter);
+app.use(`${apiVersion}/auth`, loginRouter, registerRouter);
