@@ -1,3 +1,3 @@
-export * from "./flavorModel.js";
-export * from "./detailModel.js";
-export * from "./pizzaModel.js";
+export * from "./detail.model.js";
+export * from "./flavor.model.js";
+export * from "./pizza.model.js";

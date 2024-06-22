@@ -1,12 +1,11 @@
-import { Admin, Client, Order, OrderPizza, Pizza } from "../models/associations.js";
+import { Order, OrderPizza, Pizza, User } from "../models/associations.js";
 
 const dropTables = async () => {
   try {
     await OrderPizza.drop();
     await Order.drop();
     await Pizza.drop();
-    await Client.drop();
-    await Admin.drop();
+    await User.drop();
 
     console.log(`
       |--------------------------------|
