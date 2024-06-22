@@ -1,11 +1,10 @@
-import { Client } from "../../models/associations.js";
+import { User } from "../../models/associations.js";
 
-export const checkIfClientAccountExist = async (email) => {
+export const checkIfUserAccountExist = async (email) => {
   try {
-    const client = await Client.findOne({ where: { email } });
-    return client;
+    const user = await User.findOne({ where: { email } });
+    return user;
   } catch (error) {
     console.log(error);
   };
 };
-

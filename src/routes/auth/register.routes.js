@@ -1,6 +1,6 @@
 import express from "express";
 import { body } from "express-validator";
-import { register, registerClient } from "../../controllers/auth/index.js";
+import { register, registerUser } from "../../controllers/auth/index.js";
 
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.post("/register",
   body("email").isEmail().withMessage("Ingrese un correo electrónico válido."),
   body("phone").notEmpty().withMessage("Ingrese su número de teléfono."),
   body("password").isLength({ min: 6 }).withMessage("La contraseña es muy corta."),
-  registerClient,
+  registerUser,
 );
 
 export const registerRouter = router;
