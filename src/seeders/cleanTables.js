@@ -1,14 +1,12 @@
-import { Client, Detail, Flavor, Status } from "../models/associations.js";
-import Admin from "../models/admin/adminModel.js";
+import { Detail, Flavor, Role, Status } from "../models/associations.js";
 
 const cleanTables = async () => {
   try {
     await Promise.all([
-      Client.destroy({ where: {}, truncate: true }),
       Status.destroy({ where: {}, truncate: true }),
       Detail.destroy({ where: {}, truncate: true }),
       Flavor.destroy({ where: {}, truncate: true }),
-      Admin.destroy({ where: {}, truncate: true }),
+      Role.destroy({ where: {}, truncate: true }),
     ]);
 
     console.log(`

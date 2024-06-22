@@ -1,7 +1,6 @@
 import db from "../config/dbConnection.js";
-import { Client, Detail, Flavor, Order, OrderPizza, Pizza, Status } from "../models/associations.js";
-import { admin, client, detail, flavor, order, orderPizza, pizza, status } from "./tables/index.js";
-import Admin from "../models/admin/adminModel.js";
+import { Admin, Client, Detail, Flavor, Order, OrderPizza, Pizza, Role, Status } from "../models/associations.js";
+import { admin, client, detail, flavor, order, orderPizza, pizza, role, status } from "./tables/index.js";
 
 const generateTables = async () => {
 	try {
@@ -10,14 +9,15 @@ const generateTables = async () => {
 
 		await Promise.all([
 			Status.bulkCreate(status),
-			Client.bulkCreate(client),
 			Detail.bulkCreate(detail),
 			Flavor.bulkCreate(flavor),
+			Role.bulkCreate(role),
 		]);
-		await Order.bulkCreate(order);
+		await Client.bulkCreate(client),
+			await Order.bulkCreate(order);
 		await Pizza.bulkCreate(pizza);
-		await OrderPizza.bulkCreate(orderPizza)
-		await Admin.bulkCreate(admin);
+		await OrderPizza.bulkCreate(orderPizza),
+			await Admin.bulkCreate(admin);
 
 		console.log(`
 			|----------------------------------|

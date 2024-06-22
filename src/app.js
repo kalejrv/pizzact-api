@@ -23,7 +23,7 @@ try {
   await db.authenticate();
   await db.sync();
 
-  console.log(`DB connection successfully.`);
+  console.log(`${db.config.database} db connected successfully.`);
 } catch (error) {
   console.log(error);
 };

@@ -7,6 +7,7 @@ export const client = [
     phone: 77233456,
     email: "alejandro@correo.com",
     password: await hashPassword("alejandro123"),
+    id_role: 2,
   },
   {
     name: "Lisbeth Rugama",
@@ -14,5 +15,6 @@ export const client = [
     phone: 89893434,
     email: "lisbeth@correo.com",
     password: await hashPassword("lisbeth123"),
+    id_role: 2,
   },
 ];
