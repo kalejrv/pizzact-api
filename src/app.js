@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import db from "./config/dbConnection.js";
-import { authRouter } from "./routes/index.js";
+import { loginRouter, registerRouter } from "./routes/auth/index.js";
 
 /* Allow environment variables and create a express application. */
 dotenv.config();
@@ -31,4 +31,4 @@ try {
 
 /* Routing. */
 const apiVersion = "/api/v1";
-app.use(`${apiVersion}/auth`, authRouter);
+app.use(`${apiVersion}/auth`, loginRouter, registerRouter);
