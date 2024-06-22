@@ -1,3 +1,3 @@
-export * from "./orderModel.js";
-export * from "./statusModel.js";
-export * from "./orderPizzaModel.js";
+export * from "./order.model.js";
+export * from "./status.model.js";
+export * from "./orderPizza.model.js";

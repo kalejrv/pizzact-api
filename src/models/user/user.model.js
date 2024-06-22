@@ -2,8 +2,8 @@ import { DataTypes } from "sequelize";
 import bcrypt from "bcrypt";
 import db from "../../config/dbConnection.js";
 
-const Admin = db.define("tb_admin", {
-  id_admin: {
+const User = db.define("tb_user", {
+  id_user: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
@@ -11,6 +11,14 @@ const Admin = db.define("tb_admin", {
   },
   name: {
     type: DataTypes.STRING(50),
+    allowNull: false,
+  },
+  address: {
+    type: DataTypes.STRING(200),
+    allowNull: false,
+  },
+  phone: {
+    type: DataTypes.INTEGER(8),
     allowNull: false,
   },
   email: {
@@ -23,16 +31,16 @@ const Admin = db.define("tb_admin", {
   },
 }, {
   hooks: {
-    beforeCreate: async function (admin) {
+    beforeCreate: async function (user) {
       const saltRoudns = 10;
       const salt = await bcrypt.genSalt(saltRoudns);
-      admin.password = await bcrypt.hash(admin.password, salt);
+      user.password = await bcrypt.hash(user.password, salt);
     },
   },
 });
 
-Admin.prototype.checkPassword = function (password) {
+User.prototype.checkPassword = function (password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-export default Admin;
+export default User;
