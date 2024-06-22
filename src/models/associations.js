@@ -1,13 +1,12 @@
-import Client from "./client/clientModel.js";
-import Admin from "./admin/adminModel.js";
-import Role from "./role/roleModel.js";
+import Role from "./role/role.model.js";
+import User from "./user/user.model.js";
 import { Order, OrderPizza, Status } from "./order/index.js";
 import { Detail, Flavor, Pizza } from "./pizza/index.js";
 
-/* Relationship 1:1 between Order and Client.
-  Relationship 1:N between Client and Order. */
-Order.belongsTo(Client, { foreignKey: "id_client" });
-Client.hasMany(Order, { foreignKey: "id_client" });
+/* Relationship 1:1 between Order and User.
+  Relationship 1:N between User and Order. */
+Order.belongsTo(User, { foreignKey: "id_user" });
+User.hasMany(Order, { foreignKey: "id_user" });
 
 /* Relationship 1:1 between Order and Status.
   Relationship 1:N between Status and Order. */
@@ -34,14 +33,9 @@ Pizza.hasMany(OrderPizza, { foreignKey: "id_pizza" });
 OrderPizza.belongsTo(Order, { foreignKey: "id_order" });
 Order.hasMany(OrderPizza, { foreignKey: "id_order" });
 
-/* Relationship 1:1 between Client and Role.
-  Relationship 1:N between Role and Client. */
-Client.belongsTo(Role, { foreignKey: "id_role" });
-Role.hasMany(Client, { foreignKey: "id_role" });
+/* Relationship 1:1 between User and Role.
+  Relationship 1:N between Role and User. */
+User.belongsTo(Role, { foreignKey: "id_role" });
+Role.hasMany(User, { foreignKey: "id_role" });
 
-/* Relationship 1:1 between Admin and Role.
-  Relationship 1:N between Role and Admin. */
-Admin.belongsTo(Role, { foreignKey: "id_role" });
-Role.hasMany(Admin, { foreignKey: "id_role" });
-
-export { Client, Status, Order, Detail, Flavor, Pizza, OrderPizza, Admin, Role };
+export { User, Status, Order, Detail, Flavor, Pizza, OrderPizza, Role };
