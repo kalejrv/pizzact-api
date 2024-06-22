@@ -1,4 +1,6 @@
 import Client from "./client/clientModel.js";
+import Admin from "./admin/adminModel.js";
+import Role from "./role/roleModel.js";
 import { Order, OrderPizza, Status } from "./order/index.js";
 import { Detail, Flavor, Pizza } from "./pizza/index.js";
 
@@ -32,4 +34,14 @@ Pizza.hasMany(OrderPizza, { foreignKey: "id_pizza" });
 OrderPizza.belongsTo(Order, { foreignKey: "id_order" });
 Order.hasMany(OrderPizza, { foreignKey: "id_order" });
 
-export { Client, Status, Order, Detail, Flavor, Pizza, OrderPizza };
+/* Relationship 1:1 between Client and Role.
+  Relationship 1:N between Role and Client. */
+Client.belongsTo(Role, { foreignKey: "id_role" });
+Role.hasMany(Client, { foreignKey: "id_role" });
+
+/* Relationship 1:1 between Admin and Role.
+  Relationship 1:N between Role and Admin. */
+Admin.belongsTo(Role, { foreignKey: "id_role" });
+Role.hasMany(Admin, { foreignKey: "id_role" });
+
+export { Client, Status, Order, Detail, Flavor, Pizza, OrderPizza, Admin, Role };
